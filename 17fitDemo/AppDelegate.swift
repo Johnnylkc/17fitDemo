@@ -12,10 +12,35 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let tabBarController = UITabBarController()
+    var tabBarIcon = UIImage()
+    var tabBarSelectedIcon = UIImage()
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+
+        let mainPage = MainTVC()
+        let mainPageNav = UINavigationController(rootViewController: mainPage)
+        mainPage.tabBarItem =
+            UITabBarItem(title: "探索", image: UIImage(named: "001"), selectedImage: UIImage(named: "001") )
+        
+        let secondPage = SecondVC()
+        let secondPageNav = UINavigationController(rootViewController: secondPage)
+        secondPage.tabBarItem = UITabBarItem(title: "課程列表", image: UIImage(named: "002"), selectedImage: UIImage(named: "002"))
+        
+        
+        
+        
+        
+        let controllers = [mainPageNav,secondPageNav]
+        tabBarController.viewControllers = controllers
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
