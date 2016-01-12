@@ -53,7 +53,7 @@ class InfoTVC: UITableViewController  {
     func alamoGET()
     {
         
-        Alamofire.request(.GET, infoDict["Image"] as! String).responseImage { response in
+        Alamofire.request(.GET, infoDict["photo"] as! String).responseImage { response in
 //                debugPrint(response)
 //                print(response.request)
 //                print(response.response)
@@ -74,7 +74,7 @@ class InfoTVC: UITableViewController  {
     {
         
         ////第一個細胞的大圖 加在cellForRow
-        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 250)
+        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 300)
         topImages.contentMode = .ScaleAspectFill
         topImages.clipsToBounds = true
     
@@ -85,10 +85,10 @@ class InfoTVC: UITableViewController  {
         commentButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
         ///// headerView
-        headerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 260)
-        headerView.backgroundColor = UIColor.blackColor()
+        headerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 300)
+        headerView.backgroundColor = UIColor.grayColor()
         headerView.addSubview(topImages)
-        
+        self.tableView.tableHeaderView = headerView
         
     }
     

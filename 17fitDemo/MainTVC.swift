@@ -78,7 +78,7 @@ class MainTVC: UITableViewController  {
     
     func alamofire()
     {
-        let url:String = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=8f6fcb24-290b-461d-9d34-72ed1b3f51f0"
+        let url:String = "http://www.pa9.club/api/v1/stores"
         
         
         Alamofire.request(.GET, url ).responseJSON { response in
@@ -90,7 +90,7 @@ class MainTVC: UITableViewController  {
                 if let JSON = response.result.value
                 {
                     //print("JSON: \(JSON)")
-                    self.jsonArray = JSON["result"]!!["results"] as! NSMutableArray
+                    self.jsonArray = JSON["data"] as! NSMutableArray
                     print("抓到囉\(self.jsonArray)")
                     
                 }
@@ -139,14 +139,14 @@ class MainTVC: UITableViewController  {
         cell.selectionStyle = .None
         
         
-        cell.className.text = dictForCell["ParkName"] as? String
+        cell.className.text = dictForCell["name"] as? String
         
         cell.mainImage.image = nil
         
         if dictForCell["Image"] != nil
         {
             
-            Alamofire.request(.GET, dictForCell["Image"] as! String).responseImage { response in
+            Alamofire.request(.GET, dictForCell["photo"] as! String).responseImage { response in
 //                debugPrint(response)
 //                print(response.request)
 //                print(response.response)
