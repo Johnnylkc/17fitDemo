@@ -12,10 +12,10 @@ import AlamofireImage
 
 class InfoTVC: UITableViewController   {
 
-    var infoDict = NSDictionary() //這個在前一頁的didSelect 有接前一頁的self.jsonArray[indexPath.row]
-    var topImages = UIImageView()
+    var infoDict = NSDictionary() //這個在前一頁的MainTVC的didSelect 接 self.jsonArray[indexPath.row]
+    var topImages = UIImageView() //要放在table header的圖
    
-    var headerView01 = UIView()
+    var headerView01 = UIView()   //因為table的header 不能只放image 一定得先墊個UIView
     
     let kTableHeaderHeight:CGFloat = 300
     var headerView :UIView!
@@ -27,7 +27,7 @@ class InfoTVC: UITableViewController   {
     {
         super.viewDidLoad()
 
-        //細胞註冊 這個沒有另外開細胞檔 所以直接用UITableViewCell
+        //細胞註冊 
         self.tableView.registerClass(InfoCell.self, forCellReuseIdentifier: "cell")
        
         ////navBar設定
@@ -53,12 +53,8 @@ class InfoTVC: UITableViewController   {
         tableView.addSubview(headerView)
         tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+       
         updateHeaderView()
-
-        
-        
-        
-        
         
         alamoGET()
 
@@ -92,7 +88,6 @@ class InfoTVC: UITableViewController   {
     override func scrollViewDidScroll(scrollView: UIScrollView)
     {
         updateHeaderView()
-
     }
     
     
