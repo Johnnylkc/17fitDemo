@@ -10,7 +10,6 @@ import UIKit
 
 class InfoCell: UITableViewCell {
     
-    //var gradientLayer = CAGradientLayer()
     
     
     
@@ -18,12 +17,7 @@ class InfoCell: UITableViewCell {
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-       // gradientLayer.frame = contentView.bounds
-//        let color1 = UIColor.clearColor().CGColor
-//        let color2 = UIColor.whiteColor().CGColor
-//        let colorsArray = [color1,color2]
-//        gradientLayer.colors = colorsArray
-//        contentView.addsubl
+
 
         
     }

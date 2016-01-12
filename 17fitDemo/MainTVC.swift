@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-//import AlamofireImage
+import AlamofireImage
 //import SwiftyJSON
 
 class MainTVC: UITableViewController  {
@@ -99,6 +99,9 @@ class MainTVC: UITableViewController  {
         }
     }
     
+ 
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -152,6 +155,7 @@ class MainTVC: UITableViewController  {
                 if let image = response.result.value 
                 {
                     print("image downloaded: \(image)")
+                    
                     cell.mainImage.image = image
                     
                 }
@@ -231,6 +235,6 @@ class MainTVC: UITableViewController  {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    *//////
 
 }

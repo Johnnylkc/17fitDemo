@@ -10,18 +10,20 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class InfoTVC: UITableViewController {
+class InfoTVC: UITableViewController  {
 
     var infoDict = NSDictionary() //這個在前一頁的didSelect 有接前一頁的self.jsonArray[indexPath.row]
     var topImages = UIImageView()
     var commentButton = UIButton()
-    
+   
+    var headerView = UIView()
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        //細胞註冊 這個沒有另外開細胞檔 所以直接用UITableViewCell
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -29,10 +31,13 @@ class InfoTVC: UITableViewController {
         self.navigationController?.navigationBar.translucent = true
         self.automaticallyAdjustsScrollViewInsets = false
         
-
+     
         
-        allUI()
+        
+        
+        
         alamoGET()
+        allUI()
     }
     
     override func viewWillDisappear(animated: Bool)
@@ -43,11 +48,10 @@ class InfoTVC: UITableViewController {
         
     }
 
+
     
     func alamoGET()
     {
-        
-        
         
         Alamofire.request(.GET, infoDict["Image"] as! String).responseImage { response in
 //                debugPrint(response)
@@ -74,22 +78,21 @@ class InfoTVC: UITableViewController {
         topImages.contentMode = .ScaleAspectFill
         topImages.clipsToBounds = true
     
-    
         ////commentButton 加在cellForRow
         commentButton.frame = CGRectMake(10, 40, 300, 40)
         commentButton.backgroundColor = UIColor.redColor()
         commentButton.setTitle("我要評論", forState: .Normal)
         commentButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
-    
-      
+        ///// headerView
+        headerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 260)
+        headerView.backgroundColor = UIColor.blackColor()
+        headerView.addSubview(topImages)
         
-    
+        
     }
     
-    
-    
-    
+  
     
     
     
@@ -109,7 +112,7 @@ class InfoTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 15
+        return 20
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -120,7 +123,7 @@ class InfoTVC: UITableViewController {
         switch indexPath.row
         {
         case 0:
-            rowHeight = 500
+            rowHeight = 250
             
         case 1:
             rowHeight = 200
@@ -132,6 +135,8 @@ class InfoTVC: UITableViewController {
         return rowHeight
     }
     
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
@@ -140,8 +145,8 @@ class InfoTVC: UITableViewController {
         switch indexPath.row
         {
         case 0:
-            cell.addSubview(topImages)
-
+         // cell.addSubview(topImages)
+            break
             
         case 1:
             cell.addSubview(commentButton)
