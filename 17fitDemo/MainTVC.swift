@@ -4,7 +4,6 @@
 //
 //  Created by 劉坤昶 on 2016/1/10.
 //  Copyright © 2016年 劉坤昶 Johnny. All rights reserved.
-//
 
 import UIKit
 import Alamofire
@@ -24,12 +23,8 @@ class MainTVC: UITableViewController  {
     {
         super.viewWillAppear(true)
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-
-        
         self.tableView.rowHeight = 250
         
-
     }
 
     override func viewDidLoad()
@@ -40,8 +35,10 @@ class MainTVC: UITableViewController  {
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
         self.tableView.separatorStyle = .None
+
      
-        
+        self.title = "擊沉KMT"
+        self.navigationController?.navigationBar.tintColor = UIColor.orangeColor()
         
         
         

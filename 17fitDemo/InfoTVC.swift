@@ -12,9 +12,9 @@ import AlamofireImage
 
 class InfoTVC: UITableViewController {
 
-    var infoDict = NSDictionary()
+    var infoDict = NSDictionary() //這個在前一頁的didSelect 有接前一頁的self.jsonArray[indexPath.row]
     var topImages = UIImageView()
-    
+    var commentButton = UIButton()
     
     
     
@@ -23,31 +23,38 @@ class InfoTVC: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    
-    
+       
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
-       
         self.automaticallyAdjustsScrollViewInsets = false
         
+
+        
         allUI()
+        alamoGET()
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(true)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        
     }
 
     
-    func allUI()
+    func alamoGET()
     {
-        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 250)
-        topImages.contentMode = .ScaleAspectFill
-        topImages.clipsToBounds = true
+        
         
         
         Alamofire.request(.GET, infoDict["Image"] as! String).responseImage { response in
-                debugPrint(response)
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                
+//                debugPrint(response)
+//                print(response.request)
+//                print(response.response)
+//                debugPrint(response.result)
+//                
                 if let image = response.result.value
                 {
                     print("image downloaded: \(image)")
@@ -57,6 +64,33 @@ class InfoTVC: UITableViewController {
         
         
     }
+    
+
+    func allUI()
+    {
+        
+        ////第一個細胞的大圖 加在cellForRow
+        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 250)
+        topImages.contentMode = .ScaleAspectFill
+        topImages.clipsToBounds = true
+    
+    
+        ////commentButton 加在cellForRow
+        commentButton.frame = CGRectMake(10, 40, 300, 40)
+        commentButton.backgroundColor = UIColor.redColor()
+        commentButton.setTitle("我要評論", forState: .Normal)
+        commentButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
+    
+      
+        
+    
+    }
+    
+    
+    
+    
+    
     
     
     
@@ -86,7 +120,7 @@ class InfoTVC: UITableViewController {
         switch indexPath.row
         {
         case 0:
-            rowHeight = 250
+            rowHeight = 500
             
         case 1:
             rowHeight = 200
@@ -107,7 +141,10 @@ class InfoTVC: UITableViewController {
         {
         case 0:
             cell.addSubview(topImages)
+
             
+        case 1:
+            cell.addSubview(commentButton)
             
         default:
             break
