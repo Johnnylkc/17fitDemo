@@ -10,7 +10,7 @@ import UIKit
 
 class InfoCell: UITableViewCell {
     
-    
+    let testLabel = UILabel()
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
@@ -18,6 +18,8 @@ class InfoCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
 
+        testLabel.frame = CGRectMake(10, 5, 100, 30)
+        contentView.addSubview(testLabel)
 
         
     }
