@@ -16,6 +16,7 @@
 		B286E2741C42582E00723EBC /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B286E2731C42582E00723EBC /* MainCell.swift */; };
 		B286E2771C43896500723EBC /* InfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B286E2761C43896500723EBC /* InfoTVC.swift */; };
 		B286E2791C43897B00723EBC /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B286E2781C43897B00723EBC /* InfoCell.swift */; };
+		B2F7A8B61C46A4AF003945F8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F7A8B51C46A4AF003945F8 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B286E2731C42582E00723EBC /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		B286E2761C43896500723EBC /* InfoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTVC.swift; sourceTree = "<group>"; };
 		B286E2781C43897B00723EBC /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		B2F7A8B51C46A4AF003945F8 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				B286E25D1C423E9200723EBC /* AppDelegate.swift */,
+				B2F7A8B51C46A4AF003945F8 /* Networking.swift */,
 				B286E2751C43892500723EBC /* MainTVC */,
 				B286E2711C424FC300723EBC /* SecondVC.swift */,
 				B286E2641C423E9200723EBC /* Assets.xcassets */,
@@ -232,6 +235,7 @@
 				B286E2741C42582E00723EBC /* MainCell.swift in Sources */,
 				B286E25E1C423E9200723EBC /* AppDelegate.swift in Sources */,
 				B286E2791C43897B00723EBC /* InfoCell.swift in Sources */,
+				B2F7A8B61C46A4AF003945F8 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

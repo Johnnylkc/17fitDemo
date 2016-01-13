@@ -15,9 +15,11 @@ class InfoTVC: UITableViewController   {
     var infoDict = NSDictionary() //這個在前一頁的MainTVC的didSelect 接 self.jsonArray[indexPath.row]
     var topImages = UIImageView() //要放在table header的圖
    
-    var headerView01 = UIView()   //因為table的header 不能只放image 一定得先墊個UIView
+    var headerView01 = UIView()   //因為table的header 不能只放image 一定得先墊個UIView 這個是實體的view 有給frame 圖片也是加
+                                  //在這上面 但後來要變形拉大不是用它 所以他的frame 我指給寬 其他都是零
     
-    let kTableHeaderHeight:CGFloat = 300
+    
+    let kTableHeaderHeight:CGFloat = 300  
     var headerView :UIView!
     
 
@@ -27,25 +29,30 @@ class InfoTVC: UITableViewController   {
     {
         super.viewDidLoad()
 
-        //細胞註冊 
+        ////細胞註冊
         self.tableView.registerClass(InfoCell.self, forCellReuseIdentifier: "cell")
        
         ////navBar設定
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
+        
+        ////這個設定 讓桌子 可以頂到畫面最上面
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        
+        ///大圖 加在桌子的header 的 headerview
+        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 300)
+        topImages.contentMode = .ScaleAspectFill
+        topImages.clipsToBounds = true
+        
+        
         
         ///// headerView
         headerView01.frame = CGRectMake(0, 0, tableView.frame.size.width, 0)
         headerView01.backgroundColor = UIColor.grayColor()
         headerView01.addSubview(topImages)
         tableView.tableHeaderView = headerView01
-        
-        ///大圖 加在桌子的header 的 headerview
-        topImages.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 300)
-        topImages.contentMode = .ScaleAspectFill
-        topImages.clipsToBounds = true
         
         
         headerView = tableView.tableHeaderView

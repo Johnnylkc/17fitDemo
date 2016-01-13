@@ -55,9 +55,16 @@ class MainTVC: UITableViewController  {
         self.tableView.addSubview(testButton)
         
         
+        Networking.alamofireGET("http://www.pa9.club/api/v1/stores")
+       
+        self.tableView.reloadData()
+
+        self.jsonArray = Networking.alamofireGET("http://www.pa9.club/api/v1/stores")
         
+        print(self.jsonArray.count)
         
-        alamofire()
+        //alamofire()
+        
 
         
     }
@@ -76,28 +83,27 @@ class MainTVC: UITableViewController  {
     
    
     
-    func alamofire()
-    {
-        let url:String = "http://www.pa9.club/api/v1/stores"
-        
-        
-        Alamofire.request(.GET, url ).responseJSON { response in
-//                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
-            
-                if let JSON = response.result.value
-                {
-                    //print("JSON: \(JSON)")
-                    self.jsonArray = JSON["data"] as! NSMutableArray
-                    print("抓到囉\(self.jsonArray)")
-                    
-                }
-            
-            self.tableView.reloadData()
-        }
-    }
+//    func alamofire()
+//    {
+//        let url:String = "http://www.pa9.club/api/v1/stores"
+//
+//        Alamofire.request(.GET, url).responseJSON { response in
+////                print(response.request)  // original URL request
+////                print(response.response) // URL response
+////                print(response.data)     // server data
+////                print(response.result)   // result of response serialization
+//            
+//                if let JSON = response.result.value
+//                {
+//                    //print("JSON: \(JSON)")
+//                    self.jsonArray = JSON["data"] as! NSMutableArray
+//                    print("抓到囉\(self.jsonArray)")
+//                    
+//                }
+//            
+//            self.tableView.reloadData()
+//        }
+//    }
     
  
     
@@ -132,7 +138,7 @@ class MainTVC: UITableViewController  {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MainCell
 
         let dictForCell = self.jsonArray[indexPath.row]
-        
+        print("qqqqqqqq\(dictForCell)")
         
         //細胞外觀設定
         cell.backgroundColor = UIColor.clearColor()
