@@ -13,13 +13,7 @@ import Alamofire
 class Networking
 {
     
-    var kkArray : NSMutableArray?
-    
-    init ( kkArray:NSMutableArray)
-    {
-        self.kkArray = kkArray
-    
-    }
+ 
     
     class func alamofireGET(url:String) -> NSMutableArray
     {
@@ -43,3 +37,7 @@ class Networking
 
 
 }
+
+
+
+

@@ -12,8 +12,6 @@ import AlamofireImage
 
 class MainTVC: UITableViewController  {
     
-    
-    
     var jsonArray = NSMutableArray()
     
     var testButton = UIButton()
